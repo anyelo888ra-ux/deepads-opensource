@@ -23,6 +23,7 @@
     .btn, button { border:0; cursor:pointer; display:inline-block; padding:12px 18px; border-radius:12px; background:var(--accent); color:white; font:inherit; font-weight:700; }
     .btn.secondary, button.secondary { background:#171c2b; border:1px solid var(--line); }
     .warning { border-color:#8b4d4d; background:#241619; }
+    .owner { border-color:#3f65b8; background:linear-gradient(135deg,rgba(31,48,89,.8),rgba(17,21,34,.95)); }
     .form { display:grid; gap:12px; }
     label { font-weight:700; }
     input { width:100%; padding:13px 14px; border-radius:10px; border:1px solid var(--line); background:#0b0e17; color:var(--text); font:inherit; }
@@ -37,7 +38,7 @@
 </head>
 <body>
   <main class="wrap">
-    <span class="badge">OPEN SOURCE • v0.2 CAMPAIGNS</span>
+    <span class="badge">OPEN SOURCE • v0.2.1 OWNER CAMPAIGN</span>
     <h1>Deep<span class="gradient">Ads</span></h1>
     <p class="lead">Un sistema de anuncios abierto donde las visualizaciones válidas pueden aumentar ligeramente la exposición de una página o aplicación dentro de un ecosistema.</p>
 
@@ -51,7 +52,19 @@
       <article class="card"><div class="number">5 → +0,1%</div><p>Por cada 5 visualizaciones válidas se propone una pequeña mejora de exposición.</p></article>
       <article class="card"><h2>📢 Campañas</h2><p>v0.2 añade una interfaz experimental para crear campañas y asignarles un identificador.</p></article>
       <article class="card"><h2>🛡️ Anti-abuso</h2><p>La validación real será server-side en futuras versiones. Esta demo no cuenta vistas reales.</p></article>
-      <article class="card warning"><h2>⚠️ Embed privado</h2><p><strong>No compartas tu embed.</strong> Trátalo como una credencial de integración limitada y revocable.</p></article>
+      <article class="card warning"><h2>⚠️ Embed privado</h2><p><strong>No compartas tu embed privado.</strong> En producción debe ser limitado y revocable.</p></article>
+    </section>
+
+    <section class="card owner" id="official" style="margin-top:28px">
+      <h2>🐾 Campaña oficial de DeepAds</h2>
+      <p>El owner de DeepAds también puede promocionar el propio proyecto. Esta campaña oficial de demostración apunta al repositorio open source.</p>
+      <p><strong>Campaign ID:</strong> <code>deepads-owner-v0-2-1</code></p>
+      <button type="button" id="ownerEmbedBtn">Generar embed demo del owner</button>
+      <div class="result" id="ownerResult">
+        <p><strong>Embed demo</strong></p>
+        <div class="token" id="ownerEmbedToken"></div>
+        <p class="small">⚠️ Es un identificador de demostración generado en este navegador, no una credencial privada real. No se guarda en el repositorio. Los embeds privados reales se generarán desde un backend en una futura versión.</p>
+      </div>
     </section>
 
     <section class="card" id="creator" style="margin-top:28px">
@@ -80,7 +93,7 @@
       <article class="card"><h2>📱 Futuro</h2><p>La API podrá integrarse con motores de búsqueda y tiendas de aplicaciones.</p></article>
     </section>
 
-    <footer>DeepAds Open Source • v0.2 • Security-first y auditable</footer>
+    <footer>DeepAds Open Source • v0.2.1 • Security-first y auditable</footer>
   </main>
 <script>
 (() => {
@@ -90,12 +103,20 @@
   const embedToken = document.getElementById("embedToken");
   const revokeBtn = document.getElementById("revokeBtn");
   const status = document.getElementById("status");
+  const ownerEmbedBtn = document.getElementById("ownerEmbedBtn");
+  const ownerResult = document.getElementById("ownerResult");
+  const ownerEmbedToken = document.getElementById("ownerEmbedToken");
 
   function randomHex(bytes) {
     const data = new Uint8Array(bytes);
     crypto.getRandomValues(data);
     return [...data].map(x => x.toString(16).padStart(2, "0")).join("");
   }
+
+  ownerEmbedBtn.addEventListener("click", () => {
+    ownerEmbedToken.textContent = "embed_owner_demo_" + randomHex(24);
+    ownerResult.classList.add("show");
+  });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
