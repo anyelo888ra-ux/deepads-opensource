@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="DeepAds — creador gratuito de anuncios v0.5.">
+<title>DeepAds • Crear anuncio</title>
+<style>
+:root{color-scheme:dark;--bg:#080b12;--card:#111724;--text:#f4f7ff;--muted:#aeb8ca;--accent:#7c5cff;--cyan:#00d4ff;--line:#273047;--ok:#8ee6a8;--warn:#ffd27a;--bad:#ff8585}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at top,#182044,#080b12 55%);color:var(--text)}
+.wrap{width:min(1050px,92%);margin:auto;padding:42px 0 70px}.badge{display:inline-block;border:1px solid var(--line);padding:7px 12px;border-radius:999px;color:var(--cyan);font-size:13px}
+h1{font-size:clamp(42px,8vw,72px);margin:18px 0 8px;letter-spacing:-3px}.gradient{background:linear-gradient(90deg,var(--accent),var(--cyan));-webkit-background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:19px;line-height:1.6;max-width:760px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:24px}.card{background:rgba(17,23,36,.92);border:1px solid var(--line);border-radius:20px;padding:22px}
+label{display:block;font-weight:700;margin:0 0 7px}input,textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:11px;background:#090d15;color:var(--text);font:inherit}textarea{min-height:100px;resize:vertical}
+.form{display:grid;gap:15px}.btn,button{border:0;border-radius:11px;padding:12px 17px;background:var(--accent);color:white;font:inherit;font-weight:800;cursor:pointer}.secondary{background:#171d2c;border:1px solid var(--line)}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{text-decoration:none;display:inline-block}
+.drop{border:1px dashed #52607c;border-radius:15px;padding:22px;text-align:center;background:#0b101a}.drop input{margin-top:10px}.preview{width:100%;max-height:280px;object-fit:contain;border-radius:12px;background:#080b12;margin-top:12px;display:none}
+.status{padding:13px;border-radius:11px;background:#0b101a;border:1px solid var(--line);line-height:1.5}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.hidden{display:none}.code{font-family:ui-monospace,SFMono-Regular,monospace;word-break:break-all;background:#090c13;border:1px dashed #4b5875;border-radius:11px;padding:13px;font-size:13px}
+.small{font-size:13px;color:var(--muted);line-height:1.55}.notice{border-color:#735d31;background:#201a0d}.security{border-color:#315e73;background:#0c1a22}footer{margin-top:35px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<main class="wrap">
+<span class="badge">OPEN SOURCE • v0.5 ADS CREATOR</span>
+<h1>Crear <span class="gradient">anuncio</span></h1>
+<p class="lead">Crea anuncios gratis durante la etapa v1.0. Sube una imagen o MP4, indica dónde debe ir el clic y genera una vista previa del embed.</p>
+<div class="buttons">
+<a class="btn secondary" href="index.html">← DeepAds</a>
+<a class="btn secondary" href="ads-demo.html">Ver ads-demo</a>
+</div>
+<section class="grid">
+<div class="card">
+<h2>📣 Tu anuncio</h2>
+<form class="form" id="adForm">
+<div><label for="name">Nombre del anuncio</label><input id="name" maxlength="80" required placeholder="Mi campaña"></div>
+<div><label for="url">URL de destino</label><input id="url" type="url" maxlength="500" required placeholder="https://ejemplo.com"></div>
+<div><label for="description">Descripción</label><textarea id="description" maxlength="240" placeholder="Qué estás promocionando"></textarea></div>
+<div class="drop">
+<strong>🖼️ Imagen o 🎬 MP4</strong>
+<p class="small">Demo frontend: el archivo se previsualiza localmente y no se sube a GitHub.</p>
+<input id="media" type="file" accept="image/*,video/mp4">
+<img id="imagePreview" class="preview" alt="Vista previa">
+<video id="videoPreview" class="preview" controls muted></video>
+</div>
+<button type="submit">Crear anuncio gratis</button>
+</form>
+</div>
+<div class="card">
+<h2>🛡️ Verificación de URL</h2>
+<div class="status" id="scanStatus"><span class="warn">Pendiente.</span> Primero introduce una URL válida.</div>
+<p class="small">La integración real con VirusTotal debe ejecutarse desde el backend para no exponer una API key en el navegador. VirusTotal ofrece un endpoint para analizar URLs y otro para consultar sus reportes.</p>
+<div class="status security"><strong>Security-first:</strong> una detección limpia no significa que una URL sea absolutamente segura. DeepAds debe combinar el resultado de VT con sus propias reglas de revisión.</div>
+</div>
+</section>
+<section class="card hidden" id="result" style="margin-top:18px">
+<h2>✅ Anuncio creado — demo</h2>
+<p><strong>Ad ID</strong></p><div class="code" id="adId"></div>
+<p><strong>Embed demo</strong></p><div class="code" id="embed"></div>
+<p class="small">Este embed de la v0.5 es un identificador de demostración. No es una credencial de servidor y no se guarda en el repositorio.</p>
+<a class="btn" href="ads-demo.html">Abrir en Ads Demo</a>
+</section>
+<section class="card notice" style="margin-top:18px">
+<h3>⚠️ Importante sobre VirusTotal</h3>
+<p class="small">La API pública de VirusTotal tiene límites y condiciones de uso. Además, los indicadores enviados a la API pueden incorporarse a su dataset. No envíes secretos, PII o URLs confidenciales. La clave debe permanecer en el backend.</p>
+</section>
+<footer>DeepAds Open Source • v0.5 • Ads Creator gratis • Security-first y auditable</footer>
+</main>
+<script>
+(()=> {
+const form=document.getElementById('adForm'),url=document.getElementById('url'),status=document.getElementById('scanStatus');
+const media=document.getElementById('media'),img=document.getElementById('imagePreview'),vid=document.getElementById('videoPreview');
+const result=document.getElementById('result'),adId=document.getElementById('adId'),embed=document.getElementById('embed');
+function hex(n){const a=new Uint8Array(n);crypto.getRandomValues(a);return [...a].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function checkUrlSyntax(){
+ try{const u=new URL(url.value.trim());if(!['http:','https:'].includes(u.protocol))throw 0;
+ status.innerHTML='<span class="ok">✓ URL válida.</span> La verificación de reputación se realizará en el backend.';
+ }catch{status.innerHTML='<span class="bad">✕ URL no válida.</span> Usa una URL http:// o https://.'}
+}
+url.addEventListener('input',checkUrlSyntax);
+media.addEventListener('change',()=>{
+ const f=media.files[0];img.style.display='none';vid.style.display='none';if(!f)return;
+ const src=URL.createObjectURL(f);
+ if(f.type.startsWith('image/')){img.src=src;img.style.display='block'}
+ else if(f.type==='video/mp4'){vid.src=src;vid.style.display='block'}
+});
+form.addEventListener('submit',e=>{
+ e.preventDefault();checkUrlSyntax();
+ try{const u=new URL(url.value.trim());if(!['http:','https:'].includes(u.protocol))return}catch{return}
+ const id='ad_'+hex(8),token='embed_demo_'+hex(24);
+ adId.textContent=id;embed.textContent='deepads://embed/'+id+'?token='+token;
+ result.classList.remove('hidden');result.scrollIntoView({behavior:'smooth',block:'start'});
+});
+})();
+</script>
+</body>
+</html>
