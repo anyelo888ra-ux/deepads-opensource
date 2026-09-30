@@ -62,15 +62,16 @@ La documentación del proyecto está en [docs/](docs/README.md).
 - [Embeds](docs/embeds.md)
 - [Anti-abuso](docs/anti-abuse.md)
 - [Integraciones](docs/integrations.md)
+- [Campañas](docs/campaigns.md)
 - [Política de seguridad](SECURITY.md)
 - [Roadmap](ROADMAP.md)
 - [Changelog](CHANGELOG.md)
 
 ## 🚀 Estado
 
-**v0.1 — prototipo inicial**
+**v0.2 — campañas experimentales**
 
-La primera versión se centrará en la web pública, la creación de campañas y el sistema básico de embeds.
+v0.2 añade un creador de campañas frontend, Campaign IDs y tokens de embed de demostración. La versión actual sigue siendo estática y no registra vistas reales.
 
 ## 📜 Licencia
 
