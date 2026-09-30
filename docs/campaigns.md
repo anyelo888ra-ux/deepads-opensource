@@ -1,4 +1,4 @@
-# Campañas — v0.2
+# Campañas — v0.2 / v0.2.1
 
 La v0.2 introduce el concepto de campañas y una interfaz experimental para generarlas.
 
@@ -15,6 +15,17 @@ Embed token
   ↓
 Integración futura
 ```
+
+## Campaña oficial de DeepAds — v0.2.1
+
+DeepAds incluye una campaña oficial de demostración para promocionar el propio proyecto.
+
+- Campaign ID: `deepads-owner-v0-2-1`
+- Destino: repositorio oficial de DeepAds
+- El botón de la página genera un identificador `embed_owner_demo_*` solamente en el navegador.
+- Ese identificador **no es una credencial privada real** y no se almacena en el repositorio.
+
+Esto permite probar el flujo sin publicar un secreto. Cuando exista backend, el owner podrá generar un embed privado real con permisos limitados y revocables.
 
 ## Demo de GitHub Pages
 
