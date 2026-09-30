@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DeepAds Open Source — sistema de anuncios abierto con recompensas de exposición y embeds privados.">
+  <title>DeepAds Open Source</title>
+  <style>
+    :root { color-scheme: dark; --bg:#090b12; --card:#111522; --text:#f4f7ff; --muted:#aab3c5; --accent:#7c5cff; --accent2:#00d4ff; --line:#252c3d; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif; background:radial-gradient(circle at top,#182040 0,#090b12 45%); color:var(--text); min-height:100vh; }
+    .wrap { width:min(1100px,92%); margin:auto; padding:70px 0; }
+    .badge { display:inline-block; padding:7px 12px; border:1px solid var(--line); border-radius:999px; color:var(--accent2); background:#101524; font-size:14px; }
+    h1 { font-size:clamp(44px,8vw,82px); margin:18px 0 10px; line-height:.95; letter-spacing:-3px; }
+    .gradient { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; color:transparent; }
+    .lead { max-width:720px; font-size:20px; line-height:1.6; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:38px; }
+    .card { background:rgba(17,21,34,.88); border:1px solid var(--line); border-radius:20px; padding:24px; }
+    .card h2 { margin-top:0; }
+    .number { font-size:40px; font-weight:800; }
+    .buttons { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+    a { color:inherit; text-decoration:none; }
+    .btn { display:inline-block; padding:12px 18px; border-radius:12px; background:var(--accent); font-weight:700; }
+    .btn.secondary { background:#171c2b; border:1px solid var(--line); }
+    .warning { border-color:#8b4d4d; background:#241619; }
+    code { color:#d7dcff; }
+    footer { margin-top:55px; color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <span class="badge">OPEN SOURCE • v0.1</span>
+    <h1>Deep<span class="gradient">Ads</span></h1>
+    <p class="lead">Un sistema de anuncios abierto donde las visualizaciones válidas pueden aumentar ligeramente la exposición de una página o aplicación dentro de un ecosistema.</p>
+
+    <div class="buttons">
+      <a class="btn" href="https://github.com/anyelo888ra-ux/deepads-opensource">GitHub</a>
+      <a class="btn secondary" href="#how">Cómo funciona</a>
+    </div>
+
+    <section class="grid" id="how">
+      <article class="card">
+        <div class="number">5 → +0,1%</div>
+        <p>Por cada 5 visualizaciones válidas se obtiene una pequeña mejora de exposición.</p>
+      </article>
+      <article class="card">
+        <h2>🔎 Descubrimiento</h2>
+        <p>Puede integrarse en motores de búsqueda, tiendas de aplicaciones y otros servicios.</p>
+      </article>
+      <article class="card">
+        <h2>🛡️ Anti-abuso</h2>
+        <p>Las implementaciones deben filtrar recargas, automatización y otras vistas artificiales.</p>
+      </article>
+      <article class="card warning">
+        <h2>⚠️ Embed privado</h2>
+        <p><strong>No compartas tu embed.</strong> Trátalo como una credencial de integración limitada y revocable.</p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>📢 Sin pago por vista</h2>
+        <p>DeepAds no convierte las visualizaciones en dinero para el espectador. La propuesta es una mejora de exposición.</p>
+      </article>
+      <article class="card">
+        <h2>🧩 Open source</h2>
+        <p>El código puede auditarse, modificarse y reutilizarse bajo la licencia MIT.</p>
+      </article>
+      <article class="card">
+        <h2>📱 Android</h2>
+        <p>Integración con una futura tienda de aplicaciones del ecosistema.</p>
+      </article>
+    </section>
+
+    <footer>DeepAds Open Source • Experimental • Security-first y auditable</footer>
+  </main>
+</body>
+</html>
