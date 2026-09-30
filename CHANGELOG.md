@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.2
+
+- Creador de campañas experimental para GitHub Pages.
+- Generación local de Campaign IDs.
+- Generación local de embed tokens de demostración.
+- Revocación local de campañas.
+- Documentación de campañas.
+- Se aclara que todavía no existe backend ni registro real de vistas.
+
 ## Unreleased
 
 ### Added
