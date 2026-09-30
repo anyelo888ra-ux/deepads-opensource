@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.1
+
+- Añadida campaña oficial de DeepAds para promocionar el propio proyecto.
+- Añadido Campaign ID `deepads-owner-v0-2-1`.
+- Añadido generador de embed demo del owner sin guardar el identificador en el repositorio.
+- Aclarado que el embed demo no es una credencial privada real.
+
+
 ## v0.2
 
 - Creador de campañas experimental para GitHub Pages.
