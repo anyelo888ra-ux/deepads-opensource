@@ -53,6 +53,19 @@ DeepAds está pensado para que otras personas puedan:
 - proponer mejoras;
 - construir integraciones nuevas.
 
+## 📚 Documentación
+
+La documentación del proyecto está en [docs/](docs/README.md).
+
+- [Conceptos](docs/concepts.md)
+- [Arquitectura](docs/architecture.md)
+- [Embeds](docs/embeds.md)
+- [Anti-abuso](docs/anti-abuse.md)
+- [Integraciones](docs/integrations.md)
+- [Política de seguridad](SECURITY.md)
+- [Roadmap](ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+
 ## 🚀 Estado
 
 **v0.1 — prototipo inicial**
