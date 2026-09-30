@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DeepAds • Ads Demo</title>
+<style>
+:root{color-scheme:dark;--bg:#080b12;--card:#121827;--text:#f5f7ff;--muted:#aab4c8;--line:#293248;--accent:#7c5cff;--cyan:#00d4ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#182043,#080b12 60%);font-family:Inter,system-ui,sans-serif;color:var(--text)}
+.wrap{width:min(1050px,92%);margin:auto;padding:45px 0 70px}.badge{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--cyan);font-size:13px}
+h1{font-size:clamp(42px,7vw,70px);letter-spacing:-3px;margin:18px 0}.gradient{background:linear-gradient(90deg,var(--accent),var(--cyan));-webkit-background-clip:text;color:transparent}
+p{line-height:1.55;color:var(--muted)}.buttons{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;text-decoration:none;background:#171d2c;border:1px solid var(--line);padding:11px 16px;border-radius:11px;color:white;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:28px}.card{background:rgba(18,24,39,.94);border:1px solid var(--line);border-radius:20px;padding:20px}
+.ad{overflow:hidden;border-radius:16px;border:1px solid #35405a;background:#0b101a}.ad-media{height:180px;display:grid;place-items:center;background:linear-gradient(135deg,#20284b,#0c111d);font-size:54px}.ad-body{padding:16px}.ad-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#8f9bb2}.ad h3{margin:7px 0}.cta{display:inline-block;margin-top:10px;background:var(--accent);padding:10px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:800}
+.code{font:13px ui-monospace,SFMono-Regular,monospace;word-break:break-all;padding:13px;border:1px dashed #4b5875;border-radius:11px;background:#090c13}.warn{border-color:#735d31;background:#211a0c}.small{font-size:13px}footer{margin-top:35px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap">
+<span class="badge">DEEPADS • v0.5 ADS DEMO</span>
+<h1>Así se ven tus <span class="gradient">ads</span></h1>
+<p>Esta página muestra el formato visual de un anuncio y cómo podría verse una integración de embed. Los ejemplos son locales y no cuentan visualizaciones reales.</p>
+<div class="buttons"><a class="btn" href="create.html">Crear anuncio gratis</a><a class="btn" href="index.html">Inicio</a></div>
+<section class="grid">
+<article class="card"><h2>📱 Ad compacto</h2><div class="ad"><div class="ad-media">📢</div><div class="ad-body"><div class="ad-label">Publicidad · DeepAds</div><h3>Mi aplicación</h3><p>Una demostración de cómo puede aparecer un anuncio dentro de una app o web.</p><a class="cta" href="#" onclick="return false">Ver anuncio</a></div></div></article>
+<article class="card"><h2>🖥️ Ad destacado</h2><div class="ad"><div class="ad-media">🚀</div><div class="ad-body"><div class="ad-label">Publicidad · DeepAds</div><h3>Proyecto Open Source</h3><p>El diseño puede adaptarse al sitio que integra DeepAds sin ocultar que es publicidad.</p><a class="cta" href="#" onclick="return false">Conocer más</a></div></div></article>
+</section>
+<section class="card" style="margin-top:18px"><h2>🔐 Ejemplo de embed</h2><p>Un formato futuro podría transportar un identificador limitado, no secretos administrativos:</p><div class="code">deepads://embed/ad_demo_7f31c9?token=embed_demo_xxxxxxxxxxxxxxxxxxxxxxxx</div><p class="small">⚠️ Este valor es ficticio. Los embeds reales serán emitidos por el backend, tendrán permisos mínimos y podrán revocarse.</p></section>
+<section class="card warn" style="margin-top:18px"><h2>🧪 Modo demo</h2><p>La v0.5 sirve para diseñar y probar la experiencia. No registra vistas, no paga por clics y no debe usarse para inflar estadísticas.</p></section>
+<footer>DeepAds Open Source • v0.5 • Ads Demo</footer>
+</main>
+</body>
+</html>
