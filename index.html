@@ -3,76 +3,131 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DeepAds Open Source — sistema de anuncios abierto con recompensas de exposición y embeds privados.">
+  <meta name="description" content="DeepAds Open Source — sistema de anuncios abierto con campañas y embeds privados.">
   <title>DeepAds Open Source</title>
   <style>
-    :root { color-scheme: dark; --bg:#090b12; --card:#111522; --text:#f4f7ff; --muted:#aab3c5; --accent:#7c5cff; --accent2:#00d4ff; --line:#252c3d; }
+    :root { color-scheme:dark; --bg:#090b12; --card:#111522; --text:#f4f7ff; --muted:#aab3c5; --accent:#7c5cff; --accent2:#00d4ff; --line:#252c3d; --danger:#ff7373; }
     * { box-sizing:border-box; }
-    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif; background:radial-gradient(circle at top,#182040 0,#090b12 45%); color:var(--text); min-height:100vh; }
-    .wrap { width:min(1100px,92%); margin:auto; padding:70px 0; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif; background:radial-gradient(circle at top,#182040 0,#090b12 48%); color:var(--text); min-height:100vh; }
+    .wrap { width:min(1100px,92%); margin:auto; padding:60px 0; }
     .badge { display:inline-block; padding:7px 12px; border:1px solid var(--line); border-radius:999px; color:var(--accent2); background:#101524; font-size:14px; }
     h1 { font-size:clamp(44px,8vw,82px); margin:18px 0 10px; line-height:.95; letter-spacing:-3px; }
     .gradient { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; color:transparent; }
-    .lead { max-width:720px; font-size:20px; line-height:1.6; color:var(--muted); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:38px; }
-    .card { background:rgba(17,21,34,.88); border:1px solid var(--line); border-radius:20px; padding:24px; }
+    .lead { max-width:760px; font-size:20px; line-height:1.6; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:28px; }
+    .card { background:rgba(17,21,34,.9); border:1px solid var(--line); border-radius:20px; padding:24px; }
     .card h2 { margin-top:0; }
     .number { font-size:40px; font-weight:800; }
     .buttons { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
     a { color:inherit; text-decoration:none; }
-    .btn { display:inline-block; padding:12px 18px; border-radius:12px; background:var(--accent); font-weight:700; }
-    .btn.secondary { background:#171c2b; border:1px solid var(--line); }
+    .btn, button { border:0; cursor:pointer; display:inline-block; padding:12px 18px; border-radius:12px; background:var(--accent); color:white; font:inherit; font-weight:700; }
+    .btn.secondary, button.secondary { background:#171c2b; border:1px solid var(--line); }
     .warning { border-color:#8b4d4d; background:#241619; }
+    .form { display:grid; gap:12px; }
+    label { font-weight:700; }
+    input { width:100%; padding:13px 14px; border-radius:10px; border:1px solid var(--line); background:#0b0e17; color:var(--text); font:inherit; }
+    .result { margin-top:18px; display:none; }
+    .result.show { display:block; }
+    .token { word-break:break-all; background:#090b12; border:1px dashed #48516a; border-radius:10px; padding:14px; font-family:ui-monospace,SFMono-Regular,monospace; font-size:13px; }
+    .small { color:var(--muted); font-size:14px; line-height:1.5; }
+    .status { margin-top:12px; color:#9fe7b2; }
     code { color:#d7dcff; }
     footer { margin-top:55px; color:var(--muted); font-size:14px; }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <span class="badge">OPEN SOURCE • v0.1</span>
+    <span class="badge">OPEN SOURCE • v0.2 CAMPAIGNS</span>
     <h1>Deep<span class="gradient">Ads</span></h1>
     <p class="lead">Un sistema de anuncios abierto donde las visualizaciones válidas pueden aumentar ligeramente la exposición de una página o aplicación dentro de un ecosistema.</p>
 
     <div class="buttons">
       <a class="btn" href="https://github.com/anyelo888ra-ux/deepads-opensource">GitHub</a>
+      <a class="btn secondary" href="#creator">Crear campaña</a>
       <a class="btn secondary" href="#how">Cómo funciona</a>
     </div>
 
     <section class="grid" id="how">
-      <article class="card">
-        <div class="number">5 → +0,1%</div>
-        <p>Por cada 5 visualizaciones válidas se obtiene una pequeña mejora de exposición.</p>
-      </article>
-      <article class="card">
-        <h2>🔎 Descubrimiento</h2>
-        <p>Puede integrarse en motores de búsqueda, tiendas de aplicaciones y otros servicios.</p>
-      </article>
-      <article class="card">
-        <h2>🛡️ Anti-abuso</h2>
-        <p>Las implementaciones deben filtrar recargas, automatización y otras vistas artificiales.</p>
-      </article>
-      <article class="card warning">
-        <h2>⚠️ Embed privado</h2>
-        <p><strong>No compartas tu embed.</strong> Trátalo como una credencial de integración limitada y revocable.</p>
-      </article>
+      <article class="card"><div class="number">5 → +0,1%</div><p>Por cada 5 visualizaciones válidas se propone una pequeña mejora de exposición.</p></article>
+      <article class="card"><h2>📢 Campañas</h2><p>v0.2 añade una interfaz experimental para crear campañas y asignarles un identificador.</p></article>
+      <article class="card"><h2>🛡️ Anti-abuso</h2><p>La validación real será server-side en futuras versiones. Esta demo no cuenta vistas reales.</p></article>
+      <article class="card warning"><h2>⚠️ Embed privado</h2><p><strong>No compartas tu embed.</strong> Trátalo como una credencial de integración limitada y revocable.</p></article>
+    </section>
+
+    <section class="card" id="creator" style="margin-top:28px">
+      <h2>📣 Creador de campañas — v0.2</h2>
+      <p class="small">Demo estática para GitHub Pages. Los datos se guardan solamente en este navegador mediante localStorage. Todavía no existe un backend real.</p>
+      <form class="form" id="campaignForm">
+        <div><label for="name">Nombre de campaña</label><input id="name" maxlength="80" required placeholder="Ej. Mi nueva aplicación"></div>
+        <div><label for="url">URL de destino</label><input id="url" type="url" maxlength="500" required placeholder="https://ejemplo.com"></div>
+        <button type="submit">Generar campaña + embed</button>
+      </form>
+      <div class="result" id="result">
+        <h3>✅ Campaña creada (demo)</h3>
+        <p><strong>Campaign ID</strong></p>
+        <div class="token" id="campaignId"></div>
+        <p><strong>Embed token privado</strong></p>
+        <div class="token" id="embedToken"></div>
+        <p class="small">⚠️ Este token es solo una demostración local. En una implementación real, el backend debe generar, almacenar, limitar y revocar los tokens.</p>
+        <button class="secondary" type="button" id="revokeBtn">Revocar campaña (demo)</button>
+        <div class="status" id="status"></div>
+      </div>
     </section>
 
     <section class="grid">
-      <article class="card">
-        <h2>📢 Sin pago por vista</h2>
-        <p>DeepAds no convierte las visualizaciones en dinero para el espectador. La propuesta es una mejora de exposición.</p>
-      </article>
-      <article class="card">
-        <h2>🧩 Open source</h2>
-        <p>El código puede auditarse, modificarse y reutilizarse bajo la licencia MIT.</p>
-      </article>
-      <article class="card">
-        <h2>📱 Android</h2>
-        <p>Integración con una futura tienda de aplicaciones del ecosistema.</p>
-      </article>
+      <article class="card"><h2>🚫 Sin pago por vista</h2><p>DeepAds no convierte las visualizaciones en dinero para el espectador.</p></article>
+      <article class="card"><h2>🧩 Open source</h2><p>El código puede auditarse, modificarse y reutilizarse bajo MIT.</p></article>
+      <article class="card"><h2>📱 Futuro</h2><p>La API podrá integrarse con motores de búsqueda y tiendas de aplicaciones.</p></article>
     </section>
 
-    <footer>DeepAds Open Source • Experimental • Security-first y auditable</footer>
+    <footer>DeepAds Open Source • v0.2 • Security-first y auditable</footer>
   </main>
+<script>
+(() => {
+  const form = document.getElementById("campaignForm");
+  const result = document.getElementById("result");
+  const campaignId = document.getElementById("campaignId");
+  const embedToken = document.getElementById("embedToken");
+  const revokeBtn = document.getElementById("revokeBtn");
+  const status = document.getElementById("status");
+
+  function randomHex(bytes) {
+    const data = new Uint8Array(bytes);
+    crypto.getRandomValues(data);
+    return [...data].map(x => x.toString(16).padStart(2, "0")).join("");
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const url = document.getElementById("url").value.trim();
+    if (!name || !url) return;
+
+    const campaign = {
+      id: "camp_" + randomHex(8),
+      embedToken: "embed_demo_" + randomHex(24),
+      name,
+      url,
+      createdAt: new Date().toISOString(),
+      status: "active"
+    };
+
+    localStorage.setItem("deepads_demo_campaign", JSON.stringify(campaign));
+    campaignId.textContent = campaign.id;
+    embedToken.textContent = campaign.embedToken;
+    status.textContent = "Campaña activa en esta demo local.";
+    result.classList.add("show");
+  });
+
+  revokeBtn.addEventListener("click", () => {
+    const raw = localStorage.getItem("deepads_demo_campaign");
+    if (!raw) return;
+    const campaign = JSON.parse(raw);
+    campaign.status = "revoked";
+    localStorage.setItem("deepads_demo_campaign", JSON.stringify(campaign));
+    status.textContent = "Campaña revocada en esta demo local.";
+  });
+})();
+</script>
 </body>
 </html>
