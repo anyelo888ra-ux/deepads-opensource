@@ -1,82 +1,85 @@
 # DeepAds Open Source 📢
 
-DeepAds es un sistema de anuncios **open source** pensado para proyectos que quieren conseguir visibilidad sin convertir las visualizaciones en pagos directos.
+DeepAds es un sistema de anuncios **open source** para proyectos que quieren conseguir visibilidad sin convertir las visualizaciones en pagos directos.
 
-## 💡 ¿Cómo funciona?
-
-Una campaña puede obtener una pequeña mejora de exposición cuando consigue visualizaciones válidas:
+## 💡 Regla de exposición
 
 **5 visualizaciones válidas → +0,1% de exposición**
 
-La recompensa es pequeña a propósito: DeepAds busca evitar que unas pocas campañas dominen las recomendaciones.
+La recompensa es pequeña a propósito. Las integraciones deben documentar cómo usan ese dato.
 
-### 🚫 No es un sistema de pago por ver anuncios
+## 📣 Ads Creator
 
-DeepAds no promete dinero por visualizar anuncios. La recompensa consiste en una pequeña mejora de descubrimiento dentro de los servicios que integren DeepAds, por ejemplo:
+Desde **v0.5** existe `create.html`, una interfaz pública para preparar anuncios gratis durante la etapa inicial.
 
-- 🔎 motores de búsqueda
-- 📱 tiendas de aplicaciones
-- 🌐 sitios web y proyectos de la comunidad
+Permite:
+- nombre y descripción;
+- URL de destino;
+- imagen;
+- MP4;
+- generación de Ad ID;
+- generación de embed demo;
+- vista previa local.
 
-La integración decide cómo se aplica exactamente esa exposición.
+También existe **`ads-demo.html`** para visualizar cómo podría aparecer un anuncio dentro de una web o aplicación.
 
-## 🔐 Embeds y seguridad
+> La v0.5 es una demo frontend. Todavía no sube archivos ni publica anuncios automáticamente.
 
-Cuando un creador genere un anuncio, DeepAds podrá entregar un **embed privado** para instalarlo en su proyecto.
+## 🛡️ Verificación de URLs
 
-**⚠️ ADVERTENCIA: NO COMPARTAS TU EMBED PRIVADO.**
+DeepAds puede integrar **VirusTotal** desde el backend para analizar URLs antes de publicarlas. VirusTotal ofrece endpoints para enviar URLs y consultar sus reportes.
 
-El embed puede contener identificadores o credenciales de integración que permitan asociar las visualizaciones con tu campaña y sus beneficios. Trátalo como una clave privada y no lo publiques en repositorios, capturas de pantalla ni chats públicos.
+La API key de VirusTotal **nunca debe enviarse al navegador**. El frontend debe hablar con el backend de DeepAds y el backend debe hablar con VirusTotal.
 
-> Un embed privado nunca debería contener secretos de servidor de alto privilegio. Las implementaciones deben usar identificadores limitados y revocables.
+Además, una detección limpia no garantiza que una URL sea segura: DeepAds debe combinar señales externas con sus propias reglas de revisión.
 
-## 🛡️ Protección contra abuso
+## 🔐 Embeds
 
-El proyecto está diseñado con seguridad y transparencia como objetivos:
+Un embed real debe ser limitado y revocable.
 
-- detectar o limitar vistas artificiales;
-- evitar que simples recargas generen recompensas ilimitadas;
-- separar anuncios patrocinados de resultados normales;
-- documentar cómo se calcula la exposición;
-- minimizar los datos necesarios para validar una vista;
-- mantener el código público y auditable.
+**⚠️ NO COMPARTAS TU EMBED PRIVADO.**
 
-Ningún sistema puede garantizar seguridad absoluta. DeepAds busca ser **security-first y auditable**.
+Nunca debe contener secretos administrativos del servidor.
 
-## 🧩 Open source
+## 🧩 Arquitectura
 
-DeepAds está pensado para que otras personas puedan:
-
-- crear sus propias implementaciones;
-- adaptar el sistema a sus sitios o aplicaciones;
-- auditar el código;
-- proponer mejoras;
-- construir integraciones nuevas.
+```
+GitHub público
+  └── Web + docs + create.html + ads-demo.html
+              │
+              ▼ HTTPS
+Vercel backend privado
+  ├── campañas
+  ├── anuncios
+  ├── embeds
+  ├── vistas
+  ├── validación
+  └── VirusTotal
+              │
+              ▼
+        Base de datos
+```
 
 ## 📚 Documentación
 
-La documentación del proyecto está en [docs/](docs/README.md).
-
 - [Conceptos](docs/concepts.md)
 - [Arquitectura](docs/architecture.md)
-- [Embeds](docs/embeds.md)
-- [Anti-abuso](docs/anti-abuse.md)
-- [Integraciones](docs/integrations.md)
 - [Campañas](docs/campaigns.md)
-- [Política de seguridad](SECURITY.md)
+- [Ads Creator](docs/ad-creator.md)
+- [Embeds de anuncios](docs/ad-embeds.md)
+- [Anti-abuso](docs/anti-abuse.md)
+- [Seguridad](SECURITY.md)
 - [Roadmap](ROADMAP.md)
 - [Changelog](CHANGELOG.md)
 
 ## 🚀 Estado
 
-**v0.2 — campañas experimentales**
+**v0.5 — Ads Creator + Demo**
 
-v0.2 añade un creador de campañas frontend, Campaign IDs y tokens de embed de demostración. La versión actual sigue siendo estática y no registra vistas reales.
+La interfaz pública ya puede preparar anuncios en modo demo. El siguiente trabajo es conectar el flujo con el backend privado, almacenamiento persistente, moderación y verificación server-side.
 
 ## 📜 Licencia
 
-DeepAds Open Source está publicado bajo la licencia MIT.
-
----
+MIT.
 
 🐾 Proyecto experimental de **anyelo888ra-ux**.
