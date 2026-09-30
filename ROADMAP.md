@@ -13,10 +13,10 @@
 
 ## v0.2 — Campaigns
 
-- [ ] Crear campañas
-- [ ] Campaign IDs
-- [ ] Generación de embeds
-- [ ] Revocación de embeds
+- [x] Crear campañas (demo frontend)
+- [x] Campaign IDs (demo)
+- [x] Generación de embeds (demo)
+- [x] Revocación de embeds (demo local)
 - [ ] Estadísticas básicas
 
 ## v0.3 — Validación
